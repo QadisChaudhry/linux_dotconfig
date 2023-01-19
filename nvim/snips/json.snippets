@@ -1,0 +1,51 @@
+priority -50
+
+snippet s "String" bA
+"${1:key}": "${2:value}"$0
+endsnippet
+
+snippet n "Number" bA
+"${1:key}": "${2:value}"$0
+endsnippet
+
+snippet a "Array" bA
+[
+	${VISUAL}$0
+],
+endsnippet
+
+snippet na "Named array" bA
+"${1:key}": [
+	${VISUAL}$0
+],
+endsnippet
+
+snippet o "Object" bA
+{
+	${VISUAL}$0
+},
+endsnippet
+
+snippet no "Named object" bA
+"${1:key}": {
+	${VISUAL}$0
+},
+endsnippet
+
+snippet null "Null" bA
+"${0:key}": null,
+endsnippet
+
+
+global !p
+def compB(t, opts):
+	if t:
+		opts = [m[len(t):] for m in opts if m.startswith(t)]
+	if len(opts) == 1:
+		return opts[0]
+	return "(" + '|'.join(opts) + ')'
+endglobal
+
+snippet b "Bool" bA
+"${1:key}": $2`!p snip.rv=compB(t[2], ['true', 'false'])`,
+endsnippet
