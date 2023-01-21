@@ -8,31 +8,32 @@ uptime=$(uptime -p | sed -e 's/up //g')
 # Options
 shutdown=" Shutdown"
 reboot=" Restart"
-lock=" Lock"
-suspend=" Sleep"
-logout=" Logout"
+# lock=" Lock"
+# suspend=" Sleep"
+logout=" Exit"
 
 # Variable passed to rofi
-options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+# options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+options="$shutdown\n$reboot\n$logout"
 
 chosen="$(echo -e "$options" | $rofi_command -p "System" -dmenu -selected-row 0)"
 case $chosen in
     $shutdown)
-        systemctl poweroff
+        sudo poweroff
         ;;
     $reboot)
-        systemctl reboot
+        sudo reboot
         ;;
-    $lock)
-        i3lock
-        ;;
-    $suspend)
-        mpc -q pause
-        amixer set Master mute
-        systemctl suspend
-        ;;
+    # $lock)
+    #     i3lock
+    #     ;;
+    # $suspend)
+    #     mpc -q pause
+    #     amixer set Master mute
+    #     systemctl suspend
+    #     ;;
     $logout)
-        openbox --exit
+        bspc quit
         ;;
 esac
 
