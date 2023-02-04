@@ -44,8 +44,7 @@ map("n", "<leader>iw", ":lua _THOKR_TOGGLE()<cr>", opts)
 
 -- Search
 -- map("n", "<leader>sr", ":Telescope oldfiles path_display={'truncate'}<cr>", opts)
--- map("n", "<leader>sr", ":Telescope oldfiles<cr>", opts)
-map("n", "<leader>sr", ":Telescope frecency<cr>", opts)
+map("n", "<leader>sr", ":Telescope oldfiles<cr>", opts)
 map("n", "<leader>sw", ":Telescope live_grep<cr>", opts)
 map("n", "<leader>sh", ":Telescope help_tags<cr>", opts)
 map("n", "<leader>sb", ":Telescope buffers<cr>", opts)
@@ -110,7 +109,5 @@ map({ "i", "c" }, "<M-f>", "<s-right>", { noremap = true })
 
 map("x", "<s-UP>", ":move '<-2<cr>gv-gv", opts)
 map("x", "<s-DOWN>", ":move '>+1<cr>gv-gv", opts)
-
-map({ "n", "i" }, "<esc>", "<cmd>noh<cr><esc>", opts)
 
 -- map("n", "<c-h>", ":execute 'help ' . expand('<cword>')<cr>", opts)
